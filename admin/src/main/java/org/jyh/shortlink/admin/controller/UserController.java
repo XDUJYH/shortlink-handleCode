@@ -1,6 +1,9 @@
 package org.jyh.shortlink.admin.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.jyh.shortlink.admin.common.convention.result.Result;
+import org.jyh.shortlink.admin.common.convention.result.Results;
+import org.jyh.shortlink.admin.common.enums.UserErrorCodeEnum;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,8 +24,9 @@ public class UserController {
      * 根据用户名查询用户信息
      */
     @GetMapping("/api/shortlink/v1/user/{username}")
-    public UserRespDTO getUserByUserName(@PathVariable("username") String username){
-        return userService.getUserByUserName(username);
+    public Result<UserRespDTO> getUserByUserName(@PathVariable("username") String username){
+        UserRespDTO result = userService.getUserByUserName(username);
+        return Results.success(result);
     }
 
 
