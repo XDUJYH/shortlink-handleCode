@@ -1,6 +1,8 @@
 package org.jyh.shortlink.admin.dto.resp;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
+import org.jyh.shortlink.admin.common.serialize.PhoneDesensitizationSerializer;
 
 /**
  * 用户返回参数响应
@@ -25,6 +27,7 @@ public class UserRespDTO {
     /**
      * 手机号
      */
+    @JsonSerialize(using = PhoneDesensitizationSerializer.class)
     private String phone;
 
     /**
